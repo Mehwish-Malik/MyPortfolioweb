@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wish Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav container">
+            <div class="logo">WISH<span>Malik</span></div>
+            <div class="links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="hamburg" onclick="toggleDropdown()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        <div class="dropdown" id="dropdown">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+            <i class="fa-solid fa-xmark" onclick="toggleDropdown()"></i>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="main-content">
+        <div class="image">
+            <img src="myimg.png" alt="My Image">
+        </div>
+        <div class="content">
+            <h1>Hi, I'm Mehwish Malik</h1>
+            <div class="typewriter">I'm a <span id="typewriter-text"></span></div>
+            <p>Frontend Developer specializing in TypeScript & Next.js, crafting seamless and interactive web experiences.</p>
+            <div class="social-links">
+                <a href="https://github.com/Mehwish-Malik" target="_blank"><i class="fa-brands fa-github"></i> Github</a>
+                <a href="https://www.linkedin.com/in/mehwish-malik-b548412ba" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            </div>
+            <div class="btn">
+                <button>Hire Me</button>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+<section id="about">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="myimg.png" alt="About Me Image">
+        </div>
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>
+                I'm Mehwish Malik, a passionate Frontend Developer specializing in "TypeScript & Next.js". 
+                I love crafting seamless, interactive, and highly responsive web experiences. 
+                With a strong foundation in "React, Tailwind CSS, and Sanity CMS", I focus on developing 
+                "pixel-perfect" and user-friendly interfaces.
+            </p>
+            <p>
+                My journey in web development has been filled with learning and challenges. 
+                I thrive on solving problems and continuously improving my skills. 
+                If you're looking for a "dedicated and creative" developer to bring your ideas to life, let's connect!
+            </p>
+        </div>
+    </div>
+</section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>My Skills</h2>
+        <ul>
+            <li>TypeScript & JavaScript</li>
+            <li>Next.js & React</li>
+            <li>Tailwind CSS & CSS3</li>
+            <li>Sanity CMS</li>
+            <li>Responsive Web Design</li>
+        </ul>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Services</h2>
+        <div class="service">
+            <h3>Web Development</h3>
+            <p>Creating dynamic and responsive websites tailored to your needs.</p>
+        </div>
+        <div class="service">
+            <h3>UI/UX Design</h3>
+            <p>Designing visually appealing and user-friendly interfaces.</p>
+        </div>
+        <div class="service">
+            <h3>Website Optimization</h3>
+            <p>Improving website performance and SEO for better user experience.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        // Typewriter Effect
+        const typewriterText = document.getElementById("typewriter-text");
+        const texts = ["Frontend Developer", "UI/UX Enthusiast", "Problem Solver"];
+        let index = 0;
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < texts[index].length) {
+                typewriterText.textContent += texts[index].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            } else {
+                setTimeout(eraseText, 2000);
+            }
+        }
+
+        function eraseText() {
+            if (charIndex > 0) {
+                typewriterText.textContent = texts[index].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseText, 50);
+            } else {
+                index = (index + 1) % texts.length;
+                setTimeout(typeWriter, 500);
+            }
+        }
+
+        typeWriter();
+
+        // Dropdown Menu Toggle
+        function toggleDropdown() {
+            const dropdown = document.getElementById("dropdown");
+            dropdown.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>
